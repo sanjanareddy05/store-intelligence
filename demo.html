@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Intelligence Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #fafafa;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 900px;
+        }
+        h1 {
+            color: #6a1b9a;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Store Intelligence API for Offline Retail Analytics</h1>
+
+    <p>
+        End-to-end CCTV → Detection → Event → Analytics system built using
+        YOLOv8, FastAPI, PostgreSQL and Docker.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li>YOLOv8 visitor detection & tracking</li>
+        <li>ENTRY / EXIT / REENTRY detection</li>
+        <li>Zone dwell analytics</li>
+        <li>Billing queue analytics</li>
+        <li>FastAPI + PostgreSQL backend</li>
+        <li>Dockerized deployment</li>
+        <li>96% test coverage</li>
+    </ul>
+
+    <h2>Swagger API</h2>
+    <p>Run locally:</p>
+
+    <pre>http://localhost:8000/docs</pre>
+
+    <h2>Repository</h2>
+
+    <a href="https://github.com/sanjanareddy05/store-intelligence">
+        View GitHub Repository
+    </a>
+
+    <h2>How to Run</h2>
+
+    <pre>
+docker compose up --build
+
+python pipeline/detect.py
+
+python pipeline/replay_events.py
+
+python dashboard/live_dashboard.py
+    </pre>
+</div>
+
+</body>
+</html>
