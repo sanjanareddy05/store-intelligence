@@ -1,149 +1,23 @@
-# Store Intelligence
+## Dataset Note
 
-End-to-end Store Intelligence system for retail analytics using CCTV footage, FastAPI, PostgreSQL, and YOLOv8.
+Raw CCTV clips are not included in this repository due to dataset licensing restrictions and repository size limits.
 
-## Features
+Place the provided CCTV videos inside:
 
-* CCTV person detection
-* Entry/Exit tracking
-* Zone dwell analytics
-* Billing queue detection
-* Real-time metrics API
-* Live dashboard
-* Dockerized deployment
-* Event replay system
+data/videos/
 
----
+Example:
 
-## Setup
+data/videos/CAM 1.mp4
+data/videos/CAM 2.mp4
+data/videos/CAM 3.mp4
+data/videos/CAM 4.mp4
+data/videos/CAM 5.mp4
 
-### 1. Clone repository
+After placing the clips, run:
 
-```bash
-git clone <repo-url>
-cd store-intelligence
-```
-
-### 2. Start API + database
-
-```bash
-docker compose up --build
-```
-
-### 3. Run detection pipeline
-
-```bash
 python pipeline/detect.py
-```
 
 This generates:
 
-```text
 pipeline/output/events.jsonl
-```
-
-### 4. Replay events into API
-
-```bash
-python pipeline/replay_events.py
-```
-
-### 5. Open Swagger API docs
-
-```text
-http://localhost:8000/docs
-```
-
----
-
-## Live Dashboard
-
-Run:
-
-```bash
-python dashboard/live_dashboard.py
-```
-
-The dashboard updates metrics in near real-time while events are replayed.
-
----
-
-## Run Tests
-
-```bash
-pytest --cov=app
-```
-
-Expected:
-
-* > 70% test coverage
-* API tests passing
-
----
-
-## API Endpoints
-
-### Health
-
-```text
-GET /health
-```
-
-### Metrics
-
-```text
-GET /stores/{store_id}/metrics
-```
-
-### Funnel
-
-```text
-GET /stores/{store_id}/funnel
-```
-
-### Heatmap
-
-```text
-GET /stores/{store_id}/heatmap
-```
-
-### Anomalies
-
-```text
-GET /stores/{store_id}/anomalies
-```
-
-### Ingest Events
-
-```text
-POST /events/ingest
-```
-
----
-
-## Tech Stack
-
-* YOLOv8n
-* ByteTrack
-* FastAPI
-* PostgreSQL
-* Docker
-* OpenCV
-* Rich Dashboard
-* Pytest
-
----
-
-## Project Structure
-
-```text
-store-intelligence/
-│
-├── app/
-├── pipeline/
-├── dashboard/
-├── tests/
-├── docs/
-├── docker-compose.yml
-└── README.md
-```
